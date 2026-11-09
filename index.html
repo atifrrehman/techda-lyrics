@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECHDA Lyrics</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    color:#3b82f6;
+}
+
+input[type=file]{
+    margin:20px;
+}
+
+#lyrics{
+    margin-top:20px;
+    background:#1f2937;
+    padding:20px;
+    border-radius:10px;
+    white-space:pre-wrap;
+    text-align:left;
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎵 TECHDA Lyrics</h1>
+
+<p>Select a lyrics text file.</p>
+
+<input type="file" id="fileInput" accept=".txt">
+
+<div id="lyrics"></div>
+
+<script>
+document.getElementById("fileInput").addEventListener("change", function(event){
+
+const file = event.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+document.getElementById("lyrics").textContent = e.target.result;
+};
+
+reader.readAsText(file);
+
+});
+</script>
+
+</body>
+</html>
